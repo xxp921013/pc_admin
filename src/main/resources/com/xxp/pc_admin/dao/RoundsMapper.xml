@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xxp.pc_admin.dao.RoundsMapper">
+    <resultMap id="BaseResultMap" type="com.xxp.pc_admin.domain.Rounds">
+        <!--@mbg.generated-->
+        <!--@Table rounds-->
+        <id column="rid" jdbcType="INTEGER" property="rid"/>
+        <result column="article_id" jdbcType="INTEGER" property="articleId"/>
+        <result column="round_text" jdbcType="VARCHAR" property="roundText"/>
+        <result column="round_creator" jdbcType="VARCHAR" property="roundCreator"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="image" jdbcType="VARCHAR" property="image"/>
+        <result column="gmt_create" jdbcType="BIGINT" property="gmtCreate"/>
+        <result column="gmt_modified" jdbcType="BIGINT" property="gmtModified"/>
+        <result column="thumbs_up" jdbcType="INTEGER" property="thumbsUp"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <!--@mbg.generated-->
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <!--@mbg.generated-->
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        rid, article_id, round_text, round_creator, `name`, image, gmt_create, gmt_modified,
+        thumbs_up
+    </sql>
+    <select id="selectByExample" parameterType="com.xxp.pc_admin.domain.RoundsExample" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List"/>
+        from rounds
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from rounds
+        where rid = #{rid,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        <!--@mbg.generated-->
+        delete from rounds
+        where rid = #{rid,jdbcType=INTEGER}
+    </delete>
+    <delete id="deleteByExample" parameterType="com.xxp.pc_admin.domain.RoundsExample">
+        <!--@mbg.generated-->
+        delete from rounds
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" keyColumn="rid" keyProperty="rid" parameterType="com.xxp.pc_admin.domain.Rounds"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into rounds (article_id, round_text, round_creator,
+        `name`, image, gmt_create,
+        gmt_modified, thumbs_up)
+        values (#{articleId,jdbcType=INTEGER}, #{roundText,jdbcType=VARCHAR}, #{roundCreator,jdbcType=VARCHAR},
+        #{name,jdbcType=VARCHAR}, #{image,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=BIGINT},
+        #{gmtModified,jdbcType=BIGINT}, #{thumbsUp,jdbcType=INTEGER})
+    </insert>
+    <insert id="insertSelective" keyColumn="rid" keyProperty="rid" parameterType="com.xxp.pc_admin.domain.Rounds"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into rounds
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="articleId != null">
+                article_id,
+            </if>
+            <if test="roundText != null">
+                round_text,
+            </if>
+            <if test="roundCreator != null">
+                round_creator,
+            </if>
+            <if test="name != null">
+                `name`,
+            </if>
+            <if test="image != null">
+                image,
+            </if>
+            <if test="gmtCreate != null">
+                gmt_create,
+            </if>
+            <if test="gmtModified != null">
+                gmt_modified,
+            </if>
+            <if test="thumbsUp != null">
+                thumbs_up,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="articleId != null">
+                #{articleId,jdbcType=INTEGER},
+            </if>
+            <if test="roundText != null">
+                #{roundText,jdbcType=VARCHAR},
+            </if>
+            <if test="roundCreator != null">
+                #{roundCreator,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="image != null">
+                #{image,jdbcType=VARCHAR},
+            </if>
+            <if test="gmtCreate != null">
+                #{gmtCreate,jdbcType=BIGINT},
+            </if>
+            <if test="gmtModified != null">
+                #{gmtModified,jdbcType=BIGINT},
+            </if>
+            <if test="thumbsUp != null">
+                #{thumbsUp,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.xxp.pc_admin.domain.RoundsExample" resultType="java.lang.Long">
+        <!--@mbg.generated-->
+        select count(*) from rounds
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        <!--@mbg.generated-->
+        update rounds
+        <set>
+            <if test="record.rid != null">
+                rid = #{record.rid,jdbcType=INTEGER},
+            </if>
+            <if test="record.articleId != null">
+                article_id = #{record.articleId,jdbcType=INTEGER},
+            </if>
+            <if test="record.roundText != null">
+                round_text = #{record.roundText,jdbcType=VARCHAR},
+            </if>
+            <if test="record.roundCreator != null">
+                round_creator = #{record.roundCreator,jdbcType=VARCHAR},
+            </if>
+            <if test="record.name != null">
+                `name` = #{record.name,jdbcType=VARCHAR},
+            </if>
+            <if test="record.image != null">
+                image = #{record.image,jdbcType=VARCHAR},
+            </if>
+            <if test="record.gmtCreate != null">
+                gmt_create = #{record.gmtCreate,jdbcType=BIGINT},
+            </if>
+            <if test="record.gmtModified != null">
+                gmt_modified = #{record.gmtModified,jdbcType=BIGINT},
+            </if>
+            <if test="record.thumbsUp != null">
+                thumbs_up = #{record.thumbsUp,jdbcType=INTEGER},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        <!--@mbg.generated-->
+        update rounds
+        set rid = #{record.rid,jdbcType=INTEGER},
+        article_id = #{record.articleId,jdbcType=INTEGER},
+        round_text = #{record.roundText,jdbcType=VARCHAR},
+        round_creator = #{record.roundCreator,jdbcType=VARCHAR},
+        `name` = #{record.name,jdbcType=VARCHAR},
+        image = #{record.image,jdbcType=VARCHAR},
+        gmt_create = #{record.gmtCreate,jdbcType=BIGINT},
+        gmt_modified = #{record.gmtModified,jdbcType=BIGINT},
+        thumbs_up = #{record.thumbsUp,jdbcType=INTEGER}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.xxp.pc_admin.domain.Rounds">
+        <!--@mbg.generated-->
+        update rounds
+        <set>
+            <if test="articleId != null">
+                article_id = #{articleId,jdbcType=INTEGER},
+            </if>
+            <if test="roundText != null">
+                round_text = #{roundText,jdbcType=VARCHAR},
+            </if>
+            <if test="roundCreator != null">
+                round_creator = #{roundCreator,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                `name` = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="image != null">
+                image = #{image,jdbcType=VARCHAR},
+            </if>
+            <if test="gmtCreate != null">
+                gmt_create = #{gmtCreate,jdbcType=BIGINT},
+            </if>
+            <if test="gmtModified != null">
+                gmt_modified = #{gmtModified,jdbcType=BIGINT},
+            </if>
+            <if test="thumbsUp != null">
+                thumbs_up = #{thumbsUp,jdbcType=INTEGER},
+            </if>
+        </set>
+        where rid = #{rid,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.xxp.pc_admin.domain.Rounds">
+        <!--@mbg.generated-->
+        update rounds
+        set article_id = #{articleId,jdbcType=INTEGER},
+        round_text = #{roundText,jdbcType=VARCHAR},
+        round_creator = #{roundCreator,jdbcType=VARCHAR},
+        `name` = #{name,jdbcType=VARCHAR},
+        image = #{image,jdbcType=VARCHAR},
+        gmt_create = #{gmtCreate,jdbcType=BIGINT},
+        gmt_modified = #{gmtModified,jdbcType=BIGINT},
+        thumbs_up = #{thumbsUp,jdbcType=INTEGER}
+        where rid = #{rid,jdbcType=INTEGER}
+    </update>
+
+
+    <resultMap id="roundDTO" type="com.xxp.pc_admin.dto.RoundDTO" extends="BaseResultMap">
+        <result column="article_tittle" property="articleTittle"></result>
+    </resultMap>
+
+    <select id="getList" resultMap="roundDTO">
+        select
+        r.rid, r.article_id, r.round_text, r.round_creator, `name`, r.image, r.gmt_create, r.gmt_modified,
+        r.thumbs_up
+        , a.tittle article_tittle
+        FROM rounds r LEFT JOIN article a ON r.article_id = a.id where 1=1
+        <if test="creator != ''">
+            and r.round_creator = #{creator}
+        </if>
+        <if test="articleId != null ">
+            and article_id = #{articleId}
+        </if>
+    </select>
+</mapper>
