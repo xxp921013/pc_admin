@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xxp.pc_admin.dao.TagMapper">
+    <resultMap id="BaseResultMap" type="com.xxp.pc_admin.domain.Tag">
+        <!--@mbg.generated-->
+        <!--@Table tag-->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="weight" jdbcType="BIGINT" property="weight"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <!--@mbg.generated-->
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <!--@mbg.generated-->
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, weight, `name`
+    </sql>
+    <select id="selectByExample" parameterType="com.xxp.pc_admin.domain.TagExample" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List"/>
+        from tag
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from tag
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        <!--@mbg.generated-->
+        delete from tag
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <delete id="deleteByExample" parameterType="com.xxp.pc_admin.domain.TagExample">
+        <!--@mbg.generated-->
+        delete from tag
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.xxp.pc_admin.domain.Tag"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into tag (weight, `name`)
+        values (#{weight,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.xxp.pc_admin.domain.Tag"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into tag
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="weight != null">
+                weight,
+            </if>
+            <if test="name != null">
+                `name`,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="weight != null">
+                #{weight,jdbcType=BIGINT},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.xxp.pc_admin.domain.TagExample" resultType="java.lang.Long">
+        <!--@mbg.generated-->
+        select count(*) from tag
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        <!--@mbg.generated-->
+        update tag
+        <set>
+            <if test="record.id != null">
+                id = #{record.id,jdbcType=INTEGER},
+            </if>
+            <if test="record.weight != null">
+                weight = #{record.weight,jdbcType=BIGINT},
+            </if>
+            <if test="record.name != null">
+                `name` = #{record.name,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        <!--@mbg.generated-->
+        update tag
+        set id = #{record.id,jdbcType=INTEGER},
+        weight = #{record.weight,jdbcType=BIGINT},
+        `name` = #{record.name,jdbcType=VARCHAR}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.xxp.pc_admin.domain.Tag">
+        <!--@mbg.generated-->
+        update tag
+        <set>
+            <if test="weight != null">
+                weight = #{weight,jdbcType=BIGINT},
+            </if>
+            <if test="name != null">
+                `name` = #{name,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.xxp.pc_admin.domain.Tag">
+        <!--@mbg.generated-->
+        update tag
+        set weight = #{weight,jdbcType=BIGINT},
+        `name` = #{name,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <!--auto generated by MybatisCodeHelper on 2020-10-19-->
+    <select id="findAllByNameLike" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from tag
+        <if test="likeName != ''">
+            where `name` like concat('%',#{likeName,jdbcType=VARCHAR},'%')
+        </if>
+    </select>
+</mapper>

@@ -19,5 +19,5 @@ mybatis:
 
 jwt:
   secret: xxp408395920
-  expiration: 3600000
+  expiration: 86400000
   header: Authentication
