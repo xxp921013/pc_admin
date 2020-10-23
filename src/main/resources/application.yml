@@ -12,6 +12,27 @@ spring:
       pool:
         max-active: 10
         max-idle: 10
+  rabbitmq:
+    host: 192.168.161.129
+    username: root
+    password: root
+    virtual-host: mj
+    # 手动提交消息
+    listener:
+      simple:
+        acknowledge-mode: manual
+      direct:
+        acknowledge-mode: manual
+    template:
+      #重试参数
+      retry:
+        enabled: true
+        initial-interval: 10000ms
+        max-interval: 30000ms
+        multiplier: 2
+    #发送确认
+    publisher-returns: true
+    publisher-confirm-type: CORRELATED
 mybatis:
   configuration:
     map-underscore-to-camel-case: true

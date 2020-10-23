@@ -44,4 +44,10 @@ public class ArticleController {
         tagService.insertSelective(tag);
         return Result.successWithNoData("添加成功!");
     }
+
+    @PutMapping("/editTag")
+    public Result editTag(@RequestBody Tag tag) {
+        tagService.updateByPrimaryKeySelective(tag);
+        return Result.successWithNoData("修改成功!");
+    }
 }

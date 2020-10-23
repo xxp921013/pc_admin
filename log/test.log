@@ -1,29 +1,28 @@
-21:21:19.802 INFO  org.springframework.boot.StartupInfoLogger 55 logStarting - Starting PcAdminApplication on ST9M6YAUI06J0H9 with PID 97536 (F:\bootdemo\pc_admin\target\classes started by Administrator in F:\bootdemo\pc_admin)
-21:21:19.809 INFO  org.springframework.boot.SpringApplication 651 logStartupProfileInfo - No active profile set, falling back to default profiles: default
-21:21:19.847 INFO  org.springframework.boot.logging.DeferredLog 225 logTo - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-21:21:19.847 INFO  org.springframework.boot.logging.DeferredLog 225 logTo - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-21:21:20.373 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate 249 multipleStoresDetected - Multiple Spring Data modules found, entering strict repository configuration mode!
-21:21:20.374 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate 127 registerRepositoriesIn - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-21:21:20.405 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate 187 registerRepositoriesIn - Finished Spring Data repository scanning in 20ms. Found 0 Redis repository interfaces.
-21:21:20.759 INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker 335 postProcessAfterInitialization - Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@5e1b94f4' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-21:21:20.767 INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker 335 postProcessAfterInitialization - Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-21:21:21.132 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer 108 initialize - Tomcat initialized with port(s): 8082 (http)
-21:21:21.140 INFO  org.apache.juli.logging.DirectJDKLog 173 log - Initializing ProtocolHandler ["http-nio-8082"]
-21:21:21.140 INFO  org.apache.juli.logging.DirectJDKLog 173 log - Starting service [Tomcat]
-21:21:21.141 INFO  org.apache.juli.logging.DirectJDKLog 173 log - Starting Servlet engine: [Apache Tomcat/9.0.38]
-21:21:21.213 INFO  org.apache.juli.logging.DirectJDKLog 173 log - Initializing Spring embedded WebApplicationContext
-21:21:21.214 INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext 285 prepareWebApplicationContext - Root WebApplicationContext: initialization completed in 1366 ms
-21:21:22.165 INFO  org.springframework.security.web.DefaultSecurityFilterChain 43 <init> - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3deca4da, org.springframework.security.web.context.SecurityContextPersistenceFilter@4e8afdef, org.springframework.security.web.header.HeaderWriterFilter@30f8c75d, org.springframework.security.web.authentication.logout.LogoutFilter@637a31f0, com.xxp.pc_admin.security.JwtAuthenticationTokenFilter@10308286, org.springframework.web.filter.CorsFilter@217804fe, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2ce0c812, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6aad4c32, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1bb0b119, org.springframework.security.web.session.SessionManagementFilter@714f8a55, org.springframework.security.web.access.ExceptionTranslationFilter@309902f5, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@489b14ab]
-21:21:22.331 INFO  org.springframework.scheduling.concurrent.ExecutorConfigurationSupport 181 initialize - Initializing ExecutorService 'applicationTaskExecutor'
-21:21:22.800 INFO  org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer 58 startServer - LiveReload server is running on port 35729
-21:21:22.819 INFO  org.apache.juli.logging.DirectJDKLog 173 log - Starting ProtocolHandler ["http-nio-8082"]
-21:21:22.858 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer 220 start - Tomcat started on port(s): 8082 (http) with context path ''
-21:21:22.869 INFO  org.springframework.boot.StartupInfoLogger 61 logStarted - Started PcAdminApplication in 3.396 seconds (JVM running for 4.672)
-21:21:24.774 INFO  org.apache.juli.logging.DirectJDKLog 173 log - Initializing Spring DispatcherServlet 'dispatcherServlet'
-21:21:24.774 INFO  org.springframework.web.servlet.FrameworkServlet 525 initServletBean - Initializing Servlet 'dispatcherServlet'
-21:21:24.782 INFO  org.springframework.web.servlet.FrameworkServlet 547 initServletBean - Completed initialization in 8 ms
-21:21:25.135 INFO  com.zaxxer.hikari.HikariDataSource 110 getConnection - HikariPool-1 - Starting...
-21:21:25.390 INFO  com.zaxxer.hikari.HikariDataSource 123 getConnection - HikariPool-1 - Start completed.
-21:33:10.688 INFO  org.springframework.scheduling.concurrent.ExecutorConfigurationSupport 218 shutdown - Shutting down ExecutorService 'applicationTaskExecutor'
-21:33:10.703 INFO  com.zaxxer.hikari.HikariDataSource 350 close - HikariPool-1 - Shutdown initiated...
-21:33:10.709 INFO  com.zaxxer.hikari.HikariDataSource 352 close - HikariPool-1 - Shutdown completed.
+20:37:50.866 INFO  org.springframework.boot.StartupInfoLogger 55 logStarting - Starting PcAdminApplication on ST9M6YAUI06J0H9 with PID 38172 (F:\bootdemo\pc_admin\target\classes started by Administrator in F:\bootdemo\pc_admin)
+20:37:50.877 INFO  org.springframework.boot.SpringApplication 651 logStartupProfileInfo - No active profile set, falling back to default profiles: default
+20:37:50.925 INFO  org.springframework.boot.logging.DeferredLog 225 logTo - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+20:37:50.925 INFO  org.springframework.boot.logging.DeferredLog 225 logTo - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+20:37:51.591 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate 249 multipleStoresDetected - Multiple Spring Data modules found, entering strict repository configuration mode!
+20:37:51.593 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate 127 registerRepositoriesIn - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+20:37:51.625 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate 187 registerRepositoriesIn - Finished Spring Data repository scanning in 20ms. Found 0 Redis repository interfaces.
+20:37:51.992 INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker 335 postProcessAfterInitialization - Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@5e9ed35a' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+20:37:52.000 INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker 335 postProcessAfterInitialization - Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+20:37:52.357 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer 108 initialize - Tomcat initialized with port(s): 8082 (http)
+20:37:52.365 INFO  org.apache.juli.logging.DirectJDKLog 173 log - Initializing ProtocolHandler ["http-nio-8082"]
+20:37:52.365 INFO  org.apache.juli.logging.DirectJDKLog 173 log - Starting service [Tomcat]
+20:37:52.365 INFO  org.apache.juli.logging.DirectJDKLog 173 log - Starting Servlet engine: [Apache Tomcat/9.0.38]
+20:37:52.433 INFO  org.apache.juli.logging.DirectJDKLog 173 log - Initializing Spring embedded WebApplicationContext
+20:37:52.433 INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext 285 prepareWebApplicationContext - Root WebApplicationContext: initialization completed in 1507 ms
+20:37:53.757 INFO  org.springframework.security.web.DefaultSecurityFilterChain 43 <init> - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@51b509cc, org.springframework.security.web.context.SecurityContextPersistenceFilter@1a4d08f1, org.springframework.security.web.header.HeaderWriterFilter@ed0301, org.springframework.security.web.authentication.logout.LogoutFilter@5ad18c06, com.xxp.pc_admin.security.JwtAuthenticationTokenFilter@20fb84d3, org.springframework.web.filter.CorsFilter@7d5adf69, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@718b5b14, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5ebb6bc2, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@17e1c2d5, org.springframework.security.web.session.SessionManagementFilter@6f4644af, org.springframework.security.web.access.ExceptionTranslationFilter@75efe7e7, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@410391c7]
+20:37:53.926 INFO  org.springframework.scheduling.concurrent.ExecutorConfigurationSupport 181 initialize - Initializing ExecutorService 'applicationTaskExecutor'
+20:37:54.409 INFO  org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer 58 startServer - LiveReload server is running on port 35729
+20:37:54.469 INFO  org.apache.juli.logging.DirectJDKLog 173 log - Starting ProtocolHandler ["http-nio-8082"]
+20:37:54.487 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer 220 start - Tomcat started on port(s): 8082 (http) with context path ''
+20:37:54.497 INFO  org.springframework.boot.StartupInfoLogger 61 logStarted - Started PcAdminApplication in 4.009 seconds (JVM running for 5.818)
+20:38:52.653 INFO  org.apache.juli.logging.DirectJDKLog 173 log - Initializing Spring DispatcherServlet 'dispatcherServlet'
+20:38:52.653 INFO  org.springframework.web.servlet.FrameworkServlet 525 initServletBean - Initializing Servlet 'dispatcherServlet'
+20:38:52.661 INFO  org.springframework.web.servlet.FrameworkServlet 547 initServletBean - Completed initialization in 7 ms
+20:38:52.772 INFO  com.zaxxer.hikari.HikariDataSource 110 getConnection - HikariPool-1 - Starting...
+20:38:53.122 INFO  com.zaxxer.hikari.HikariDataSource 123 getConnection - HikariPool-1 - Start completed.
+20:38:54.692 INFO  org.springframework.amqp.rabbit.connection.AbstractConnectionFactory 558 connectAddresses - Attempting to connect to: [192.168.161.129:5672]
+20:38:54.717 INFO  org.springframework.amqp.rabbit.connection.AbstractConnectionFactory 511 createBareConnection - Created new connection: rabbitConnectionFactory#58c9e64:0/SimpleConnection@2ff1d7e [delegate=amqp://root@192.168.161.129:5672/mj, localPort= 6768]
