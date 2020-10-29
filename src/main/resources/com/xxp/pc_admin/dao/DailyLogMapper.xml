@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xxp.pc_admin.dao.DailyLogMapper">
+  <resultMap id="BaseResultMap" type="com.xxp.pc_admin.domain.DailyLog">
+    <!--@mbg.generated-->
+    <!--@Table daily_log-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="loginUser" jdbcType="BIGINT" property="loginuser" />
+    <result column="round" jdbcType="BIGINT" property="round" />
+    <result column="article" jdbcType="BIGINT" property="article" />
+    <result column="newUser" jdbcType="BIGINT" property="newuser" />
+    <result column="article_read" jdbcType="BIGINT" property="articleRead" />
+    <result column="date" jdbcType="TIMESTAMP" property="date" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <!--@mbg.generated-->
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <!--@mbg.generated-->
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, loginUser, round, article, newUser, article_read, `date`
+  </sql>
+  <select id="selectByExample" parameterType="com.xxp.pc_admin.domain.DailyLogExample" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from daily_log
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from daily_log
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from daily_log
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xxp.pc_admin.domain.DailyLogExample">
+    <!--@mbg.generated-->
+    delete from daily_log
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.xxp.pc_admin.domain.DailyLog" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into daily_log (loginUser, round, article, 
+      newUser, article_read, `date`
+      )
+    values (#{loginuser,jdbcType=BIGINT}, #{round,jdbcType=BIGINT}, #{article,jdbcType=BIGINT}, 
+      #{newuser,jdbcType=BIGINT}, #{articleRead,jdbcType=BIGINT}, #{date,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.xxp.pc_admin.domain.DailyLog" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into daily_log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="loginuser != null">
+        loginUser,
+      </if>
+      <if test="round != null">
+        round,
+      </if>
+      <if test="article != null">
+        article,
+      </if>
+      <if test="newuser != null">
+        newUser,
+      </if>
+      <if test="articleRead != null">
+        article_read,
+      </if>
+      <if test="date != null">
+        `date`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="loginuser != null">
+        #{loginuser,jdbcType=BIGINT},
+      </if>
+      <if test="round != null">
+        #{round,jdbcType=BIGINT},
+      </if>
+      <if test="article != null">
+        #{article,jdbcType=BIGINT},
+      </if>
+      <if test="newuser != null">
+        #{newuser,jdbcType=BIGINT},
+      </if>
+      <if test="articleRead != null">
+        #{articleRead,jdbcType=BIGINT},
+      </if>
+      <if test="date != null">
+        #{date,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xxp.pc_admin.domain.DailyLogExample" resultType="java.lang.Long">
+    <!--@mbg.generated-->
+    select count(*) from daily_log
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    <!--@mbg.generated-->
+    update daily_log
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.loginuser != null">
+        loginUser = #{record.loginuser,jdbcType=BIGINT},
+      </if>
+      <if test="record.round != null">
+        round = #{record.round,jdbcType=BIGINT},
+      </if>
+      <if test="record.article != null">
+        article = #{record.article,jdbcType=BIGINT},
+      </if>
+      <if test="record.newuser != null">
+        newUser = #{record.newuser,jdbcType=BIGINT},
+      </if>
+      <if test="record.articleRead != null">
+        article_read = #{record.articleRead,jdbcType=BIGINT},
+      </if>
+      <if test="record.date != null">
+        `date` = #{record.date,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    <!--@mbg.generated-->
+    update daily_log
+    set id = #{record.id,jdbcType=INTEGER},
+      loginUser = #{record.loginuser,jdbcType=BIGINT},
+      round = #{record.round,jdbcType=BIGINT},
+      article = #{record.article,jdbcType=BIGINT},
+      newUser = #{record.newuser,jdbcType=BIGINT},
+      article_read = #{record.articleRead,jdbcType=BIGINT},
+      `date` = #{record.date,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xxp.pc_admin.domain.DailyLog">
+    <!--@mbg.generated-->
+    update daily_log
+    <set>
+      <if test="loginuser != null">
+        loginUser = #{loginuser,jdbcType=BIGINT},
+      </if>
+      <if test="round != null">
+        round = #{round,jdbcType=BIGINT},
+      </if>
+      <if test="article != null">
+        article = #{article,jdbcType=BIGINT},
+      </if>
+      <if test="newuser != null">
+        newUser = #{newuser,jdbcType=BIGINT},
+      </if>
+      <if test="articleRead != null">
+        article_read = #{articleRead,jdbcType=BIGINT},
+      </if>
+      <if test="date != null">
+        `date` = #{date,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xxp.pc_admin.domain.DailyLog">
+    <!--@mbg.generated-->
+    update daily_log
+    set loginUser = #{loginuser,jdbcType=BIGINT},
+      round = #{round,jdbcType=BIGINT},
+      article = #{article,jdbcType=BIGINT},
+      newUser = #{newuser,jdbcType=BIGINT},
+      article_read = #{articleRead,jdbcType=BIGINT},
+      `date` = #{date,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

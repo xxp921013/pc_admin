@@ -2,11 +2,15 @@ package com.xxp.pc_admin.controller;
 
 import com.xxp.pc_admin.base.PageResult;
 import com.xxp.pc_admin.base.Result;
+import com.xxp.pc_admin.constant.MqConstant;
 import com.xxp.pc_admin.domain.Tag;
 import com.xxp.pc_admin.service.ArticleService;
+import com.xxp.pc_admin.service.HotArticleService;
 import com.xxp.pc_admin.service.TagService;
+import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -21,6 +25,10 @@ public class ArticleController {
     private ArticleService articleService;
     @Autowired
     private TagService tagService;
+    @Autowired
+    private AmqpTemplate at;
+    @Autowired
+    private HotArticleService hotArticleService;
 
     @GetMapping("/list")
     public PageResult getList(
@@ -49,5 +57,14 @@ public class ArticleController {
     public Result editTag(@RequestBody Tag tag) {
         tagService.updateByPrimaryKeySelective(tag);
         return Result.successWithNoData("修改成功!");
+    }
+
+    @DeleteMapping("/deleteArticle/{id}")
+    @Transactional
+    public Result deleteArticle(@PathVariable("id") Integer id) {
+        articleService.deleteByPrimaryKey(id);
+        hotArticleService.deleteByPrimaryKey(id);
+        at.convertAndSend(MqConstant.ARTICLE_EXCHANGE, MqConstant.ARTICLE_ROUTING_KEY_DELETE, id);
+        return Result.successWithNoData("删除成功!");
     }
 }
