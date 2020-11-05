@@ -14,12 +14,16 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.session.SessionInformation;
+import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import java.sql.ResultSet;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -37,6 +41,8 @@ public class MenuController {
     private JwtTokenUtil jwtTokenUtil;
     @Autowired
     private WebLogService webLogService;
+    @Autowired
+    private SessionRegistry sessionRegistry;
 
     @GetMapping("/menus")
     public Result getAllMenus() {
@@ -57,6 +63,9 @@ public class MenuController {
 
         AdminUser user = (AdminUser) authentication.getPrincipal();
         String s = jwtTokenUtil.generateToken(adminUser);
+        List<Object> allPrincipals = sessionRegistry.getAllPrincipals();
+        List<SessionInformation> allSessions = sessionRegistry.getAllSessions(allPrincipals, false);
+        System.out.println("allPrincipals = " + allPrincipals.size());
         return Result.success(s, "登陆成功");
     }
 

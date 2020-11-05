@@ -8,10 +8,14 @@ import com.xxp.pc_admin.service.AdminUserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import javax.jws.Oneway;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 
 @SpringBootTest
@@ -25,6 +29,8 @@ class PcAdminApplicationTest {
     private AdminUserMapper adminUserMapper;
     @Autowired
     private SecurityUserMapper securityUserMapper;
+    @Autowired
+    private StringRedisTemplate srt;
 
     @Test
     public void demo() {
@@ -48,5 +54,14 @@ class PcAdminApplicationTest {
         List<PCUserDTO> userDTO = securityUserMapper.findUserDTO("23");
         userDTO.parallelStream().forEach(pcUserDTO -> pcUserDTO.setCreate(new Date(pcUserDTO.getGmtCreate())));
         System.out.println(userDTO);
+    }
+
+    @Test
+    public void demo4() {
+        Set keys = srt.keys("spring:session:index*");
+        for (Object key : keys) {
+            System.out.println("key = " + key);
+        }
+        System.out.println("keys.size() = " + keys.size());
     }
 }
