@@ -6,9 +6,11 @@ import com.xxp.pc_admin.base.Result;
 import com.xxp.pc_admin.domain.AdminUser;
 import com.xxp.pc_admin.domain.Menu;
 import com.xxp.pc_admin.domain.WebLog;
+import com.xxp.pc_admin.security.WebSecurity;
 import com.xxp.pc_admin.service.MenuService;
 import com.xxp.pc_admin.service.WebLogService;
 import com.xxp.pc_admin.util.JwtTokenUtil;
+import com.xxp.pc_admin.ws.WebSocketServer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -22,9 +24,13 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import javax.websocket.Session;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @description: 菜单控制器
@@ -108,5 +114,19 @@ public class MenuController {
             @RequestParam("pageSize") Integer pageSize,
             @RequestParam("username") String username) {
         return webLogService.getList(page, pageSize, username);
+    }
+
+    @GetMapping("/onlineUser")
+    public Result getOnlineUser() {
+        AdminUser user = WebSecurity.getUser();
+        ConcurrentHashMap<String, Session> sessionPools = WebSocketServer.sessionPools;
+        ArrayList<String> strings = new ArrayList<>();
+        strings.add("所有人");
+        for (String s : sessionPools.keySet()) {
+            if (!user.getUsername().equals(s)) {
+                strings.add(s);
+            }
+        }
+        return Result.success(strings, "查找成功");
     }
 }

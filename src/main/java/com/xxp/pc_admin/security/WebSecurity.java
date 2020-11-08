@@ -1,6 +1,7 @@
 package com.xxp.pc_admin.security;
 
 
+import com.xxp.pc_admin.domain.AdminUser;
 import com.xxp.pc_admin.service.impl.AdminUserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -13,6 +14,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -75,6 +77,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
                 // 角色校验时，会自动拼接 "ROLE_"
                 .antMatchers("/admin/**").hasAnyAuthority("ADMIN", "USER")
                 .antMatchers("/doLogin").permitAll()
+                .antMatchers("/webSocket/**").permitAll()
                 .anyRequest().authenticated()   // 任何请求,登录后可以访问
 //                .and().formLogin().loginProcessingUrl("/login").usernameParameter("username").passwordParameter("password")
 //                .successHandler(myAuthenticationSuccessHandler)
@@ -94,4 +97,9 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
         return new SessionRegistryImpl();
     }
 
+
+    public static AdminUser getUser() {
+        AdminUser user = (AdminUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return user;
+    }
 }
