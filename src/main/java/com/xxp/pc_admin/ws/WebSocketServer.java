@@ -64,6 +64,7 @@ public class WebSocketServer {
         String username = jwtTokenUtil.getUsernameFromToken(token);
         sessionPools.put(username, session);
         addOnlineCount();
+        sendAll("flash");
         System.out.println(username + "加入webSocket！当前人数为" + onlineNum);
     }
 
@@ -121,6 +122,18 @@ public class WebSocketServer {
 
     public static void subOnlineCount() {
         onlineNum.decrementAndGet();
+    }
+
+    public void sendAll(String message) {
+        for (Session session : sessionPools.values()) {
+
+            try {
+                sendMessage(session, message);
+            } catch (Exception e) {
+                e.printStackTrace();
+                continue;
+            }
+        }
     }
 
 }
